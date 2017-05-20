@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsx-8</title>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+        var MyComponent = React.createClass({
+            render(){
+                return (
+                    <div>我是{this.props.name}
+                        <h4>react 组件名 首字母大写</h4>
+                    </div>
+
+                )
+            }
+        });
+
+        ReactDOM.render(
+                <MyComponent name="CFshuming"/>,
+                document.getElementById("example")
+        )
+    </script>
+</body>
+</html>
