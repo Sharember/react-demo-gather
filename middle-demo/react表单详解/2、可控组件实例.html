@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>表单详解</title>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+    <script type="text/jsx">
+        var MyForm = React.createClass({ 
+            getInitialState: function () {
+                return {
+                    helloTo: "Hello World!"
+                }; 
+            },
+            handleChange: function (event) { 
+                this.setState({
+                    helloTo: event.target.value
+                });
+            },
+            submitHandler: function (event) {
+                event.preventDefault();
+                alert(this.state.helloTo); 
+            },
+            render: function () {
+                return <form onSubmit={this.submitHandler}>
+                    <input type="text" value={this.state.helloTo} onChange={this.handleChange} />
+                    <br />
+                    <button type="submit">Speak</button>
+                </form>;
+                } 
+            });
+        ReactDOM.render(<MyForm></MyForm>, document.body);
+    </script>
+</body>
+</html>

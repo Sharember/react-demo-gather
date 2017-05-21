@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>表单详解</title>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-with-addons.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+    <script type="text/jsx">
+        var Radio = React.createClass({ 
+            getInitialState: function () {
+                return {
+                    value: this.props.defaultValue
+                }; 
+            },
+            handleChange: function (event) { 
+                if (this.props.onChange) {
+                    this.props.onChange(event); }
+                    this.setState({
+                    value: event.target.value
+                }); 
+            },
+            render: function () {
+                var children = [];
+                var value = this.props.value || this.state.value;
+                React.Children.forEach(this.props.children, function (child, i) {
+                    var label = <label> 
+                        <input type="radio" key={i} name={this.props.name} value={child.props.value} checked={child.props.value == value} onChange={this.handleChange} />
+                        {child.props.children}
+                        <br/>
+                    </label>;
+                    children.push(label);
+                }.bind(this));
+                return <span>{children}</span>;
+            }
+        });
+        var MyForm = React.createClass({
+            getInitialState: function () { 
+                return {my_radio: "B"};
+            },
+            handleChange: function (event) {
+                this.setState({
+                    my_radio: event.target.value
+                }); 
+            },
+            submitHandler: function (event) { 
+                event.preventDefault(); 
+                alert(this.state.my_radio);
+            },
+            render: function () {
+                return <form onSubmit={this.submitHandler}> 
+                    <Radio name="my_radio" value={this.state.my_radio} onChange={this.handleChange}>
+                        <option value="A">First Option</option> 
+                        <option value="B">Second Option</option>
+                        <option value="C">Third Option</option>
+                    </Radio>
+                    <button type="submit">Speak</button>
+                </form>;
+            } 
+        });
+        ReactDOM.render(<MyForm></MyForm>, document.body);
+    </script>
+</body>
+</html>
