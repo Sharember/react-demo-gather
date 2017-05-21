@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>jsx-1</title>
+    <title>component-2</title>
     <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
     <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -11,15 +11,22 @@
 <body>
     <div id="example"></div>
     <script type="text/babel">
+        var HelloMessage = React.createClass({
+            render: function() {
+                return <h1>Hello {this.props.name}</h1>;
+            }
+        });
+
         ReactDOM.render(
-                <div>
-                    <h1>CFshuming</h1>
-                    <h2>欢迎来到我的github</h2>
-                    <a href="https://github.com/CFshuming">https://github.com/CFshuming</a>
-                </div>
-                ,
+                <HelloMessage name="CFshuming" />,
                 document.getElementById('example')
         );
     </script>
 </body>
 </html>
+
+<!-- 实例解析
+    以上实例中 name 属性通过 this.props.name 来获取。
+    注意：在添加属性时， class 属性需要写成 className ，for 属性需要写成 htmlFor ，
+         这是因为 class 和 for 是 JavaScript 的保留字。
+-->

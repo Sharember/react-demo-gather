@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props-3</title>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var WebSite = React.createClass({
+            getInitialState: function() {
+                return {
+                    name: "CFshuming",
+                    site: "https://github.com/CFshuming"
+                };
+            },
+
+            render: function() {
+                return (
+                        <div>
+                            <Name name={this.state.name} />
+                            <Link site={this.state.site} />
+                        </div>
+                );
+            }
+        });
+
+        var Name = React.createClass({
+            render: function() {
+                return (
+                        <h1>{this.props.name}</h1>
+                );
+            }
+        });
+
+        var Link = React.createClass({
+            render: function() {
+                return (
+                        <a href={this.props.site}>
+                            {this.props.site}
+                        </a>
+                );
+            }
+        });
+
+        ReactDOM.render(
+                <WebSite />,
+                document.getElementById('example')
+        );
+    </script>
+</body>
+</html>
+
+<!--
+上述实例演示了如何在应用中组合使用 state 和 props 。
+我们可以在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。
+在 render 函数中, 我们设置 name 和 site 来获取父组件传递过来的数据。
+-->

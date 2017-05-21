@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1</title>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        let FirstComponent = React.createClass({
+            render(){
+                return <h1>hello CFshuming</h1>
+            }
+            /* 上面的写法是下面的简写
+            render : function (){
+                return <h1>hello CFshuming</h1>
+            }
+            */
+        })
+        ReactDOM.render(
+                <FirstComponent/>,
+                document.getElementById("example")
+        )
+    </script>
+</body>
+</html>
+
+<!--  实例解析
+React.createClass 方法用于生成一个组件类 HelloMessage。
+<HelloMessage /> 实例组件类并输出信息
+
+注意：原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，
+     比如 HelloMessage 不能写成 helloMessage。
+     除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。
+
+-->

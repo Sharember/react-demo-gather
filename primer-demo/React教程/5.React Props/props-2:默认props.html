@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>jsx-1</title>
+    <title>props-2</title>
     <script src="https://cdn.bootcss.com/react/15.5.4/react.min.js"></script>
     <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -11,15 +11,26 @@
 <body>
     <div id="example"></div>
     <script type="text/babel">
+        var HelloMessage = React.createClass({
+            getDefaultProps: function() {
+                return {
+                    name: 'CFshuming'
+                };
+            },
+            render: function() {
+                return <h1>Hello {this.props.name}</h1>;
+            }
+        });
+
         ReactDOM.render(
-                <div>
-                    <h1>CFshuming</h1>
-                    <h2>欢迎来到我的github</h2>
-                    <a href="https://github.com/CFshuming">https://github.com/CFshuming</a>
-                </div>
-                ,
+                <HelloMessage />,
                 document.getElementById('example')
         );
+
     </script>
 </body>
 </html>
+
+<!--
+你可以通过 getDefaultProps() 方法为 props 设置默认值
+-->
