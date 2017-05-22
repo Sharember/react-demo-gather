@@ -8,7 +8,7 @@
     <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
 </head>
 <body>
-
+    <div id="example"></div>
     <script type="text/jsx">
         var Radio = React.createClass({ 
             getInitialState: function () {
@@ -25,15 +25,15 @@
                 }); 
             },
             render: function () {
-                var children = {};
+                var children = [];
                 var value = this.props.value || this.state.value;
                 React.Children.forEach(this.props.children, function (child, i) {
-                    var label = <label> 
-                        <input type="radio" name={this.props.name} value={child.props.value} checked={child.props.value == value} onChange={this.handleChange} />
+                    var label = <label key={i}>
+                        <input type="radio" name={this.props.name} value={child.props.value} checked={child.props.value === value} onChange={this.handleChange} />
                         {child.props.children}
                         <br/>
                     </label>;
-                    children['label' + i] = label; 
+                    children.push(label);
                 }.bind(this));
                 return <span>{children}</span>; 
             }
@@ -54,7 +54,7 @@
                 </form>;
             } 
         });
-        ReactDOM.render(<MyForm></MyForm>, document.body);
+        ReactDOM.render(<MyForm/>, document.getElementById("example"));
     </script>
 </body>
 </html>

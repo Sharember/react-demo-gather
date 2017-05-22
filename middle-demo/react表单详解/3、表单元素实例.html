@@ -8,7 +8,7 @@
     <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
 </head>
 <body>
-
+    <div id="example"></div>
     <script type="text/jsx">
         var MyForm = React.createClass({ 
             getInitialState: function () {
@@ -53,7 +53,7 @@
                 </form>;
                 } 
             });
-        ReactDOM.render(<MyForm></MyForm>, document.body);
+        ReactDOM.render(<MyForm/>, document.getElementById("example"));
     </script>
 </body>
 </html>
