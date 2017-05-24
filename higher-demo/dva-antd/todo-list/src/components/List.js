@@ -5,11 +5,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Popconfirm, Button } from 'antd';
 
-const List = ({ onDelete, products }) => {
-  const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-  }, {
+const List = ({ onDelete, lists }) => {
+  const columns = [
+    {
+      title: 'Id',
+      dataIndex: 'id',
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    }, {
     title: 'Actions',
     render: (text, record) => {
       return (
@@ -21,15 +26,16 @@ const List = ({ onDelete, products }) => {
   }];
   return (
     <Table
-      dataSource={products}
+      dataSource={lists}
       columns={columns}
+      pagination = {{ pageSize: 6}}
     />
   );
 };
 
 List.propTypes = {
   onDelete: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired,
+  lists: PropTypes.array.isRequired,
 };
 
 export default List;
