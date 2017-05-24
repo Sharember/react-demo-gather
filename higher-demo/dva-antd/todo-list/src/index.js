@@ -4,14 +4,14 @@ import './index.css';
 // 1. Initialize
 const app = dva({
   initialState: {
-    products : [
+    products: [
       { name: 'dva', id: 1 },
-      { name: 'antd', id: 2 }
-    ]
-  }
+      { name: 'antd', id: 2 },
+    ],
+  },
 });
 
-app.model(require("./models/list"));
+app.model(require('./models/list'));
 
 // 2. Plugins
 // app.use({});

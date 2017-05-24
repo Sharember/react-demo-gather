@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route } from 'dva/router';
 import IndexPage from './routes/IndexPage';
 
-import List from "./routes/List.js";
+import List from './routes/List.js';
 
 function RouterConfig({ history }) {
   return (
