@@ -1,3 +1,4 @@
+const mock = require('./src/mock/mock')
 
-export default {
-};
+module.exports = mock
+

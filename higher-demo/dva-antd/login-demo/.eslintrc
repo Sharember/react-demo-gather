@@ -22,7 +22,8 @@
     "no-bitwise": [0],
     "no-cond-assign": [0],
     "import/no-unresolved": [0],
-    "require-yield": [1]
+    "require-yield": [1],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
   },
   "parserOptions": {
     "ecmaFeatures": {

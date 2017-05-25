@@ -4,12 +4,14 @@
     "development": {
       "extraBabelPlugins": [
         "dva-hmr",
-        "transform-runtime"
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": true }]
       ]
     },
     "production": {
       "extraBabelPlugins": [
-        "transform-runtime"
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": true }]
       ]
     }
   }
