@@ -20,16 +20,16 @@ const Lists = ({ dispatch, lists, inputs }) => {
   function handelChange(e) {
     dispatch({
       type: 'inputs/change',
-      payload: e.target.value
-    })
+      payload: e.target.value,
+    });
   }
   return (
     <div>
-      <Add onAdd={handleAdd} onChange={handelChange} input={inputs.input}/>
-      <br/>
-      <hr/>
+      <Add onAdd={handleAdd} onChange={handelChange} input={inputs.input} />
+      <br />
+      <hr />
       <h2>List of Products</h2>
-      <br/>
+      <br />
       <List onDelete={handleDelete} lists={lists} />
     </div>
   );

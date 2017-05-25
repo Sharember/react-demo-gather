@@ -1,9 +1,9 @@
 /**
  * Created by chengfan on 2017/5/24.
  */
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon, Button } from 'antd'
+import { Input, Icon, Button } from 'antd';
 
 
 const Add = ({ onAdd, onChange, input }) => {
@@ -15,9 +15,9 @@ const Add = ({ onAdd, onChange, input }) => {
         value={input}
         onChange={onChange}
       />
-      <Button type="primary" onClick={ onAdd }>添加</Button>
+      <Button type="primary" onClick={onAdd}>添加</Button>
     </div>
-  )
+  );
 };
 
 Add.propTypes = {

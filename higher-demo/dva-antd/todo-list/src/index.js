@@ -7,7 +7,7 @@ const app = dva({
     lists: [
       { name: 'dva', id: 1 },
       { name: 'antd', id: 2 },
-    ]
+    ],
   },
 });
 

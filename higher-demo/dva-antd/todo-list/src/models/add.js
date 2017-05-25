@@ -7,8 +7,8 @@ export default {
     input: 'name',
   },
   reducers: {
-    change(state, { payload: name }){
-      return  {input: name}
+    change(state, { payload: name }) {
+      return { input: name };
     },
   },
 };
