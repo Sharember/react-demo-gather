@@ -10,7 +10,9 @@
     "install-node": "6.9.2"
   },
   "dependencies": {
+    "antd": "^2.10.2",
     "axios": "^0.16.1",
+    "babel-plugin-import": "^1.2.0",
     "babel-runtime": "^6.9.2",
     "dva": "^1.2.1",
     "mockjs": "^1.0.1-beta3",

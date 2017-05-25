@@ -3,8 +3,8 @@
  */
 const Mock = require('mockjs');
 
-const users = Mock.mock({
-  'user|10-20': [
+const data = Mock.mock({
+  'users|10-20': [
     {
       name: '@name',
       'age|1-100': 100,
@@ -13,10 +13,10 @@ const users = Mock.mock({
   ],
 });
 
-const database = users.user;
+const database = data.users;
 
 module.exports = {
-  [`GET /data`](req, res) {
+  [`GET /users`](req, res) {
     res.status(200).json(database);
   },
 };
