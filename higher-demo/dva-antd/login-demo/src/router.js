@@ -1,34 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import { Router, Route } from 'dva/router';
+import IndexPage from './routes/IndexPage';
+import Login from './routes/Login'
 
-import App from './routes/app'
+function RouterConfig({ history }) {
+  return (
+    <Router history={history}>
+      <Route path="/" component={Login} />
+      <Route path="/index" component={IndexPage} />
+      <Route path="/login" component={Login} />
+    </Router>
+  );
+}
 
-const registerModel = (app, model) => {
-  if (!(app._models.filter(m => m.namespace === model.namespace).length === 1)) {
-    app.model(model)
-  }
-};
-
-const Routers = function ({ history, app }) {
-  const routes = [
-    {
-      path: '/',
-      component: App,
-      getIndexRoute(nextState, cb) {
-        require.ensure([], require => {
-          registerModel(app, require('./models/login'))
-          cb(null, {component: require('./routes/Login')})
-        }, 'login')
-      },
-    },
-  ];
-  return <Router history={history} routes={routes} />
-};
-Routers.prototype = {
-  history: PropTypes.object,
-  app: PropTypes.object
-};
-
-
-export default Routers;
+export default RouterConfig;

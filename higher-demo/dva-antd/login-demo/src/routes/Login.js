@@ -16,7 +16,6 @@ const Login = ({
 
   function handelSubmit() {
     validateFieldsAndScroll((errors, values) => {
-      console.log("1" + values)
       if (errors) {
         return;
       }
@@ -31,7 +30,7 @@ const Login = ({
     <div className={styles.warp}>
       <Form className={styles.form}>
         <FormItem>
-          {getFieldDecorator('userName', {
+          {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
             <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />

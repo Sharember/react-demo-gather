@@ -1,6 +1,8 @@
 /**
- * Created by chengfan on 2017/5/25.
- */
+ * Created by chengfan on 2017/5/25*/
+
+const qs = require('qs')
+const Mock = require('mockjs')
 
 const userPermission = {
   DEFAULT: [

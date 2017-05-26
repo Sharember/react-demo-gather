@@ -1,36 +1,85 @@
-import fetch from 'dva/fetch';
+/**
+ * Created by chengfan on 2017/5/26.
+ */
+import axios from 'axios'
+import { baseURL } from './config'
+import lodash from 'lodash'
+import pathToRegexp from 'path-to-regexp'
+import { message } from 'antd'
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
+axios.defaults.baseURL = baseURL
+
+const fetch = (options) => {
+  let {
+    method = 'get',
+    data,
+    url,
+  } = options
+
+  const cloneData = lodash.cloneDeep(data);
+
+  try {
+    let domin = ''
+    if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
+      domin = url.match(/[a-zA-z]+:\/\/[^/]*/)[0]
+      url = url.slice(domin.length)
+    }
+    const match = pathToRegexp.parse(url)
+    url = pathToRegexp.compile(url)(data)
+    for (let item of match) {
+      if (item instanceof Object && item.name in cloneData) {
+        delete cloneData[item.name]
+      }
+    }
+    url = domin + url
+  } catch (e) {
+    message.error(e.message)
   }
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
+  switch (method.toLowerCase()) {
+    case 'get':
+      return axios.get(url, {
+        params: cloneData,
+      })
+    case 'delete':
+      return axios.delete(url, {
+        data: cloneData,
+      })
+    case 'post':
+      return axios.post(url, cloneData)
+    case 'put':
+      return axios.put(url, cloneData)
+    case 'patch':
+      return axios.patch(url, cloneData)
+    default:
+      return axios(options)
+  }
 }
 
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export default async function request(url, options) {
-  const response = await fetch(url, options);
+export default function request (options) {
 
-  checkStatus(response);
-
-  const data = await response.json();
-
-  const ret = {
-    data,
-    headers: {},
-  };
-
-  if (response.headers.get('x-total-count')) {
-    ret.headers['x-total-count'] = response.headers.get('x-total-count');
-  }
-  return ret.data;
+  return fetch(options).then((response) => {
+    const { statusText, status } = response
+    return {
+      success: true,
+      message: statusText,
+      status,
+      ...response.data,
+    }
+  }).catch((error) => {
+    const { response } = error
+    let msg
+    let status
+    let otherData = {}
+    if (response) {
+      const { data, statusText } = response
+      otherData = data
+      status = response.status
+      msg = data.message || statusText
+    } else {
+      status = 600
+      msg = 'Network Error'
+    }
+    return { success: false, status, message: msg, ...otherData }
+  })
 }

@@ -5,8 +5,8 @@
 import request  from '../utils/request'
 
 export async function login(data) {
-  console.log("124")
-  return request('/login', {
+  return request( {
+    url: '/login',
     method: 'post',
     data,
   })

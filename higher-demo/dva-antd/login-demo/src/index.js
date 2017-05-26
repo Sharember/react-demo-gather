@@ -1,4 +1,5 @@
 import dva from 'dva';
+import 'babel-polyfill'
 import createLoading from 'dva-loading'
 import { browserHistory } from 'dva/router'
 import { message } from 'antd'
@@ -15,13 +16,11 @@ const app = dva({
   },
 });
 
-app.model(require("./models/login"));
-
 // 2. Plugins
 // app.use({});
 
 // 3. Model
-// app.model(require('./models/example'));
+ app.model(require('./models/login'));
 
 // 4. Router
 app.router(require('./router'));

@@ -1,5 +1,5 @@
-import login from '../services/login'
-import routerResux from 'dva/router'
+import * as service from '../services/login'
+import { routerRedux } from 'dva/router'
 
 export default {
   namespace: 'login',
@@ -21,18 +21,18 @@ export default {
     }
   },
   effects: {
-    *login({ payload, }, { put, call }) {
+    *login({ payload, }, { call, put }) {
 
       yield put({
         type: 'showLoginLoading'
       });
-      const data = yield call(login, payload);
+      const data = yield call(service.login, payload);
 
       yield put({
         type: 'hideLoginLoading'
       });
       if (data.success) {
-        yield put(routerResux.push('users'))
+        yield put(routerRedux.push('/index'))
       }
     }
   },
