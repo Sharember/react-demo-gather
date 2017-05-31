@@ -20,6 +20,10 @@ const List = ({ index }) => {
       dataIndex: 'color',
     },
   ];
+
+
+
+  
   return (
     <Table
       dataSource={index}
