@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关注</title>
+</head>
+  <div id="app"></div>
+<body>
+  <script>
+    class FocusButton {
+      constructor() {
+        this.state = {
+          isFocus: false,
+        }
+      }
+      changeFocus() {
+        const focusText = this.el.getElementById('focus-text');
+        this.state.isFocus = !this.state.isFocus
+        focusText.innerHTML = this.state.isFocus ? '已关注' : '关注'
+      }
+      render() {
+        this.el = createDOMFromString(`
+          <button>
+            <span id="focus-text">关注</span>
+            <span>❤️</span>
+          </button>`
+        );
+        this.el.addEventListener('click', this.changeFocus.bind(this), false);
+        return this.el;
+      }
+    }
+
+    const createDOMFromString = (domString) => {
+      const div = document.createElement('div');
+      div.innerHTML = domString;
+      return div;
+    }
+
+    const app = document.getElementById('app')
+    const focusButton1 = new FocusButton()
+    app.appendChild(focusButton1.render());
+    
+    const focusButton2 = new FocusButton()
+    app.appendChild(focusButton2.render());
+
+  </script>
+</body>
+</html>

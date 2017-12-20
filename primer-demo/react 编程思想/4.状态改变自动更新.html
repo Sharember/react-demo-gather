@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关注</title>
+</head>
+  <div id="app"></div>
+<body>
+  <script>
+    class FocusButton {
+      constructor() {
+        this.state = {
+          isFocus: false,
+        }
+      }
+      setState (state) {
+        const oldEl = this.el;
+        this.state = state;
+        this.el = this.render();
+        if (this.onStateChange) {
+          this.onStateChange(oldEl, this.el);
+        }
+      }
+      changeFocus() {
+        this.setState({
+          isFocus: !this.state.isFocus,
+        });
+      }
+      render() {
+        this.el = createDOMFromString(`
+          <button>
+            <span>${this.state.isFocus ? '已关注' : '关注'}</span>
+            <span>❤️</span>
+          </button>`
+        );
+        this.el.addEventListener('click', this.changeFocus.bind(this), false);
+        return this.el;
+      }
+    }
+
+    const createDOMFromString = (domString) => {
+      const div = document.createElement('div');
+      div.innerHTML = domString;
+      return div;
+    }
+
+    const app = document.getElementById('app')
+    const focusButton = new FocusButton()
+    app.appendChild(focusButton.render());
+    focusButton.onStateChange = (oldEl, newEl) => {
+      app.insertBefore(newEl, oldEl) // 插入新的元素
+      app.removeChild(oldEl) // 删除旧的元素
+    }
+
+  </script>
+</body>
+</html>

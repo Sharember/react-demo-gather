@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关注</title>
+</head>
+  <div>
+      <button id="focus-btn">
+        <span id="focus-text">关注</span>
+        <span>❤️</span>
+      </button>
+  </div>
+<body>
+  <script>
+    const button = document.getElementById('.focus-btn')
+    const buttonText = button.getElementById('.focus-text')
+    let isLiked = false
+    button.addEventListener('click', () => {
+      isLiked = !isLiked
+      if (isLiked) {
+        buttonText.innerHTML = '已关注'
+      } else {
+        buttonText.innerHTML = '关注'
+      }
+    }, false)
+  </script>
+</body>
+</html>
