@@ -20,7 +20,7 @@
       }
 
       __renderDOM() {
-        this.el = createDOMFromString(this.render());
+        this.el = createElement(this.render());
         if(this.onClick) {
           this.el.addEventListener('click', this.onClick.bind(this), false);
         };
@@ -29,13 +29,13 @@
 
     }
 
-    const createDOMFromString = (domString) => {
+    const createElement = (domString) => {
       const div = document.createElement('div');
       div.innerHTML = domString;
       return div;
     }
 
-    const mount = (component, app) => {
+    const renderDOM = (component, app) => {
       app.appendChild(component.__renderDOM())
       component.onStateChange = (oldEl, newEl) => {
         app.insertBefore(newEl, oldEl)
@@ -63,7 +63,7 @@
           </button>`
       }
     }
-    mount(new FocusButton(), document.getElementById('app'));
+    renderDOM(new FocusButton(), document.getElementById('app'));
   </script>
 </body>
 </html>

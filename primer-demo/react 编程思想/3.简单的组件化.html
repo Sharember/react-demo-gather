@@ -21,7 +21,7 @@
         focusText.innerHTML = this.state.isFocus ? '已关注' : '关注'
       }
       render() {
-        this.el = createDOMFromString(`
+        this.el = createElement(`
           <button>
             <span id="focus-text">关注</span>
             <span>❤️</span>
@@ -32,7 +32,7 @@
       }
     }
 
-    const createDOMFromString = (domString) => {
+    const createElement = (domString) => {
       const div = document.createElement('div');
       div.innerHTML = domString;
       return div;
