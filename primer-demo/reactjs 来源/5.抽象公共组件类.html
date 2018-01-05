@@ -42,6 +42,7 @@
         app.removeChild(oldEl)
       }
     }
+    ////////
 
     class FocusButton extends Component {
       constructor() {
@@ -50,7 +51,9 @@
           isFocus: false,
         }
       }
+
       onClick() {
+        
         this.setState({
           isFocus: !this.state.isFocus,
         });

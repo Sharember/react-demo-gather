@@ -7,6 +7,8 @@ react demo合集。有自己写的也有各大教程的demo。如果非原创，
  - primer-demo : 初级demo目录，适合初学者，
    
     - React教程 : 整理自菜鸟教程，代码有过改动，代码里有知识点详解(待补充)，没有复杂的语法。
+    - reactjs 来源 : 整理自 reactjs 小书。
+    - react 编程思想 : 从源头实现 react。
  
  - middle-demo : 中级demo目录，适合有一定基础的人
    

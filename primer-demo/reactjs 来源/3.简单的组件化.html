@@ -16,14 +16,16 @@
         }
       }
       changeFocus() {
-        const focusText = this.el.getElementById('focus-text');
+        //isFocus
+        const focusText = this.el.querySelector('.focus-text');
         this.state.isFocus = !this.state.isFocus
         focusText.innerHTML = this.state.isFocus ? '已关注' : '关注'
+
       }
       render() {
         this.el = createElement(`
           <button>
-            <span id="focus-text">关注</span>
+            <span class="focus-text">关注</span>
             <span>❤️</span>
           </button>`
         );
@@ -39,6 +41,7 @@
     }
 
     const app = document.getElementById('app')
+
     const focusButton1 = new FocusButton()
     app.appendChild(focusButton1.render());
     

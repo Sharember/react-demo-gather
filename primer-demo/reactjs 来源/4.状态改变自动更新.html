@@ -49,6 +49,9 @@
     const app = document.getElementById('app')
     const focusButton = new FocusButton()
     app.appendChild(focusButton.render());
+
+    document.getElementById('app').appendChild(new FocusButton().render());
+
     focusButton.onStateChange = (oldEl, newEl) => {
       app.insertBefore(newEl, oldEl) // 插入新的元素
       app.removeChild(oldEl) // 删除旧的元素
