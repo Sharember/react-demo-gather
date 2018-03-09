@@ -1,0 +1,28 @@
+@import "~antd/lib/style/themes/default.less";
+@ease-in-out-circ: cubic-bezier(.78, .14, .15, .86);
+.logo {
+  height: 64px;
+  position: relative;
+  line-height: 64px;
+  max-height: 64px;
+  padding-left: (@menu-collapsed-width - 32px) / 2;
+  padding-right: (@menu-collapsed-width - 32px) / 2;
+  transition: all .3s;
+  // background: #002140;
+  overflow: hidden;
+  display: inline-block;
+  img {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+  }
+  h1 {
+    color: rgb(7, 2, 24);
+    display: inline;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 0 0 12px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+  }
+}
