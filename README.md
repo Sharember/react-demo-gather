@@ -28,4 +28,8 @@ react demo合集。有自己写的也有各大教程的demo。如果非原创，
 
     - react-all : react 全家桶项目
         - react-all-demo : react 全家桶小 demo 
+        
+- cli: 一些脚手架
+    - base-antd-pro：删除了 antd-pro 中非必须的组件，简化了项目。
+    - react-antd-dva：从 antd-pro 修改的，上中下结构的项目。
 
